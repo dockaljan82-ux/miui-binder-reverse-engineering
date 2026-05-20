@@ -33,4 +33,28 @@ Sem doplníme první nalezenou metodu.
 ## Metody chráněné (Permission Denial)
 
 Většina PerfShielder metod vyžaduje systémové UID.  
-Typicky vrací:
+Typicky vrací: java.lang.SecurityException: Permission Denial: ...
+
+Mezi chráněné metody patří například:
+
+- enforceNoDataAvail()
+- reportPerceptibleJank()
+- reportGameScene()
+- registerPerformanceListener()
+- getPerformanceInfo()
+
+---
+
+## Zajímavé nálezy (bude se doplňovat)
+
+- některé transakce vrací monotonic time v nanosekundách  
+- některé transakce vrací performance counters  
+- některé transakce crashují kvůli špatnému typu Parcelu  
+- některé transakce jsou oneway (bez návratové hodnoty)
+
+---
+
+## Viz také
+
+- `transaction-map.md` – mapa transakcí PerfShielderu  
+- `parcel-dumps/` – surové výpisy Parcelů
