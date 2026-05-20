@@ -58,3 +58,39 @@ Mezi chráněné metody patří například:
 
 - `transaction-map.md` – mapa transakcí PerfShielderu  
 - `parcel-dumps/` – surové výpisy Parcelů
+
+## Kompletní chování PerfShielder (kódy 1–15)
+
+Na základě testů pomocí `service call perfshielder X` se ukazuje, že PerfShielder má pouze jedinou aktivní metodu vracející živá data. Ostatní transakce jsou buď prázdné, chráněné, nebo placeholdery.
+
+### Mapa kódů
+
+| Kód | Odpověď | Význam |
+|-----|---------|--------|
+| 1–3 | Parcel(NULL) | metoda neexistuje nebo je přísně chráněná |
+| 4 | Parcel(00000000) | existuje, vrací prázdný parcel (void) |
+| 5–11 | Parcel(00000000 00000000) | existuje, vrací dvě nulové hodnoty |
+| 12 | Parcel(e89bf000 00000001) | **jediná živá metoda – monotonic time / performance counter** |
+| 13 | Parcel(NULL) | chráněná / neimplementovaná |
+| 14–15 | Parcel(00000000 00000000) | stejné jako 5–11 |
+
+---
+
+## Co z toho plyne
+
+### 1) Kód 12 je unikátní – jediný živý monitor
+Hodnota `e89bf000` se mění lineárně s časem → jde o monotonic timer nebo performance counter.
+
+### 2) PerfShielder není hlavní služba
+Na rozdíl od ProcessManageru má PerfShielder jen minimum aktivních metod.  
+Většina je prázdná nebo chráněná.
+
+### 3) Kód 12 = systémový časovač
+První hodnota = čas/čítač  
+Druhá hodnota = stav (pravděpodobně vždy 1)
+
+---
+
+## Praktické použití
+
+Kód 12 lze použít jako vysoce přesné stopky:
