@@ -94,3 +94,26 @@ Druhá hodnota = stav (pravděpodobně vždy 1)
 ## Praktické použití
 
 Kód 12 lze použít jako vysoce přesné stopky:
+
+start=$(service call perfshielder 12 | grep -oE '[0-9a-f]{8}' | head -1)
+sleep 1
+end=$(service call perfshielder 12 | grep -oE '[0-9a-f]{8}' | head -1)
+echo "Rozdíl: $((0x$end - 0x$start)) jednotek"
+
+---
+
+## Porovnání s ProcessManager
+
+| Vlastnost | PerfShielder | ProcessManager |
+|----------|--------------|----------------|
+| Aktivní metody | ~1 | 30+ |
+| Živá data | jen CODE 12 | mnoho (4, 12, 21, 22…) |
+| Užitečnost | měření času | procesy, whitelist, foreground, AppLock |
+
+---
+
+## Závěr
+
+PerfShielder je úzká, specializovaná služba.  
+Jediný skutečně užitečný kód je 12, který vrací monotonic time.  
+Pro hlubší analýzu MIUI je mnohem cennější ProcessManager.
