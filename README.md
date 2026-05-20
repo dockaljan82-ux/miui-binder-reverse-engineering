@@ -8,7 +8,7 @@ Tento projekt dokumentuje:
 - chování MIUI scheduleru, AppLocku a Game Turbo
 - rozdíly mezi AOSP a MIUI implementací Binder služeb
 
-## 🔍 Obsah
+## Obsah
 - **ProcessManager**
   - updateApplicationLockedState
   - protectCurrentProcess
@@ -22,19 +22,19 @@ Tento projekt dokumentuje:
   - monotonic timers
   - enforceNoDataAvail behavior
 
-## 🧪 Metodologie
+## Metodologie
 - brute‑force Binder transakcí (`service call`)
 - analýza SecurityException stacktrace
 - dekódování Parcel formátu (UTF‑16 strings, int arrays, flags)
 - porovnání s chováním systému (PID/UID změny, foreground app, whitelisty)
 
-## 📦 Struktura
+## Struktura
 - `/processmanager` – mapa transakcí, raw Parcel výstupy, analýza
 - `/perfshielder` – mapa transakcí, raw Parcel výstupy, analýza
 - `/scripts` – automatizované brute‑force skripty
 
-## 📜 Licence
+## Licence
 MIT License
 
-## ✨ Autor
+## Autor
 Jan Dočkal (Česká republika) – výzkum MIUI internals na zařízení Xiaomi 14 (houji)
