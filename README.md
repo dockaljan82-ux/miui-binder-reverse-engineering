@@ -27,7 +27,7 @@ Každá služba má:
 
 ---
 
-🟦 ProcessManager
+## ProcessManager
 
 MIUI služba miui.process.IProcessManager.
 
@@ -51,7 +51,7 @@ Mapa transakcí:
 
 ---
 
-🟧 PerfShielder
+## PerfShielder
 
 MIUI služba com.miui.perfshielder.IPerfShielder.
 
@@ -73,7 +73,7 @@ Mapa transakcí:
 
 ---
 
-🧪 Metodika
+## Metodika
 
 Projekt používá čistě black‑box přístup:
 
@@ -85,7 +85,7 @@ Projekt používá čistě black‑box přístup:
 
 ---
 
-🎯 Cíl projektu
+## Cíl projektu
 
 - vytvořit první veřejnou dokumentaci MIUI Binder služeb  
 - umožnit komunitě pochopit interní chování MIUI  
@@ -94,7 +94,7 @@ Projekt používá čistě black‑box přístup:
 
 ---
 
-🤝 Přispívání
+## Přispívání
 
 Každý může přispět:
 
